@@ -32,10 +32,11 @@ function todoReducer(todos, action) {
 }
 
 const App = () => {
-  const [todos, dispatch] = useReducer(todoReducer, undefined, createTooLot);
+  const [todos, dispatch] = useReducer(todoReducer, []);
   const nextId = useRef(4);
 
   const onInsert = useCallback((text) => {
+    if (!text) return;
     const todo = {
       id: nextId.current,
       text: text,
